@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import PlacesPage from "./PlacesPage";
 import AccountNav from "../AccountNav";
+import BookingsPage from './BookingsPage'
 
 const AccountPage = () => {
   const { user, setUser } = useContext(UserContext);
@@ -36,7 +37,6 @@ const AccountPage = () => {
     navigate("/login");
   };
 
-  // **Show loading spinner while checking user**
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -45,7 +45,6 @@ const AccountPage = () => {
     );
   }
 
-  // **Redirect to login if user is still null**
   if (!user) {
     return <p className="text-center text-red-500">Redirecting to login...</p>;
   }
@@ -75,8 +74,8 @@ const AccountPage = () => {
           </div>
         </div>
       )}
-
-      {subpage === "listings" && <PlacesPage />}
+      {subpage==="bookings" && <BookingsPage/>}
+      {subpage === "listings" && <Places Page />}
     </div>
   );
 };

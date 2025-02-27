@@ -1,13 +1,28 @@
+import axios from "axios";
 import React, { useState } from "react";
+import {useParams,useNavigate} from "react-router-dom"
 
 const BookingWidget = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
-  const [maxGuest, setGuest] = useState(0);
-
-  const handleBooking = ()=>{
-      
-  }
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const { id } = useParams();
+  const navigate = useNavigate()
+  
+  const handleBooking = async (e) => {
+    e.preventDefault()
+    nam
+    const data = {
+      checkIn,checkOut,name,email,place:id
+    }
+    const  resp = await axios.post("http://localhost:8000/booking",
+      data
+    )
+    const d = resp.data
+    alert("Booking done successfully")
+    navigate("/account/bookings")
+  };
 
   return (
     <div className="bg-gray-50 p-4 rounded-lg">
@@ -30,15 +45,25 @@ const BookingWidget = () => {
           />
         </label>
         <label className="block">
-          <b>Number of Guest:</b>
+          <b>Your Name</b>
           <input
-            onChange={(e) => setGuest(e.target.value)}
-            type="number" 
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            className="mt-1 block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </label>
+        <label className="block">
+          <b>Your Email Name</b>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
             className="mt-1 block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
           />
         </label>
       </p>
-      <button className="primary mt-4" onClick={handleBooking}>Book Here</button>
+      <button className="primary mt-4" onClick={handleBooking}>
+        Book Here
+      </button>
     </div>
   );
 };
