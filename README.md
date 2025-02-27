@@ -1,22 +1,116 @@
-# StayNest (MERN Stack with JWT Authorization)
+# Home Booking Web Application
 
-StayNest is an Airbnb clone built with the MERN stack (MongoDB, Express.js, React, Node.js) that allows users to seamlessly browse property listings, book accommodations, and manage their profiles, similar to the Airbnb platform. The application leverages JWT (JSON Web Token) for secure user authentication and uses cookies for session management, ensuring users can safely log in, stay logged in, and interact with the platform without compromising security.
+## Introduction
 
-With a user-friendly interface built using React, StayNest offers advanced search functionality to filter listings based on various criteria, a robust booking system to check availability and make reservations, and an admin dashboard for managing properties. The app is designed to be scalable and maintainable, following the best practices of modern web development.
-
-Whether you're looking for a place to stay, managing your bookings, or even hosting properties for others, StayNest provides an intuitive experience for both guests and hosts alike.
+Welcome to **StayMate**, a web application built with the MERN stack (MongoDB, Express, React, Node.js) that allows users to browse, book, and manage their home stays while traveling. This app allows users to find homes for their trips, manage bookings, and leave reviews for hosts and guests alike.
 
 ## Features
 
-- **User Authentication**: JWT authentication with cookies for secure login and session management.
-- **Property Listings**: Users can browse various properties with detailed information.
-- **Search & Filters**: Filter properties by location, price, and other features.
-- **Booking System**: Users can book properties, check availability, and view their booking history.
-- **Admin Dashboard**: Admin users can add, update, or delete property listings.
-- **User Profile**: Users can view and update their profile information.
+- **Browse Homes**: Search homes by location, price, and type.
+- **Booking System**: Users can book available homes for specific dates.
+- **User Profiles**: Users can create and manage their profiles with personal information.
+- **Host Management**: Hosts can list their homes, update details, and manage booking requests.
+- **Rating & Reviews**: Guests can leave reviews for homes and hosts.
 
 ## Technologies Used
 
-- **Frontend**: React.js,
+- **MongoDB**: NoSQL database to store user, home, and booking information.
+- **Express**: Backend framework to handle HTTP requests.
+- **React**: Frontend library to build the user interface.
+- **Node.js**: Server-side runtime environment for running JavaScript.
+- **JWT Authentication**: Secure user login with JSON Web Tokens.
 
-npm install
+## Prerequisites
+
+Before running the project locally, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [MongoDB](https://www.mongodb.com/) (running locally or use a cloud service like MongoDB Atlas)
+
+## Installation
+
+1. Clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/yourusername/staymate.git
+    ```
+
+2. Navigate to the project folder:
+    ```bash
+    cd staymate
+    ```
+
+3. Install dependencies for both backend and frontend:
+    ```bash
+    # Backend dependencies
+    cd backend
+    npm install
+
+    # Frontend dependencies
+    cd ../frontend
+    npm install
+    ```
+
+4. Create a `.env` file in the `backend` folder and add the following environment variables:
+    ```
+    MONGO_URI=mongodb://localhost:27017/staymate
+    JWT_SECRET=your_jwt_secret
+    ```
+
+5. Start the backend server:
+    ```bash
+    cd backend
+    npm start
+    ```
+
+6. Start the frontend development server:
+    ```bash
+    cd frontend
+    npm start
+    ```
+
+The app should now be running on `http://localhost:3000` for the frontend and `http://localhost:5000` for the backend.
+
+## Usage
+
+1. **Sign Up/Login**: Users can sign up for an account and log in to start browsing and booking homes.
+2. **Search Homes**: Use filters to search for homes based on location, price range, and other preferences.
+3. **Make a Booking**: Select available homes and book them for specific dates.
+4. **Host Homes**: If you're a host, you can list new homes for rent and manage them.
+5. **Rate Homes**: After staying in a home, guests can leave a rating and review.
+
+## API Endpoints
+
+### Authentication
+
+- **POST /api/auth/signup**: Register a new user.
+- **POST /api/auth/login**: Login an existing user.
+
+### Homes
+
+- **GET /api/homes**: Fetch all available homes.
+- **GET /api/homes/:id**: Fetch a specific home by its ID.
+- **POST /api/homes**: Add a new home (host only).
+- **PUT /api/homes/:id**: Update an existing home (host only).
+
+### Bookings
+
+- **GET /api/bookings**: Fetch all bookings for a user.
+- **POST /api/bookings**: Create a new booking.
+- **PUT /api/bookings/:id**: Update an existing booking.
+- **DELETE /api/bookings/:id**: Cancel a booking.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+If you have any questions, feel free to open an issue or reach out to the maintainer.
