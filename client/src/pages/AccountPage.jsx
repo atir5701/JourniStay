@@ -75,7 +75,7 @@ const AccountPage = () => {
         </div>
       )}
       {subpage==="bookings" && <BookingsPage/>}
-      {subpage === "listings" && <Places Page />}
+      {subpage === "listings" && <PlacesPage />}
     </div>
   );
 };

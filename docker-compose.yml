@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Frontend (React) Service
+  frontend:
+    build:
+      context: ./client  # Path to your React app folder
+    ports:
+      - "5173:5173"  # Exposes port 5173 for React frontend
+    networks:
+      - mern
+
+  # Backend (Node.js/Express) Service
+  backend:
+    build:
+      context: ./api  # Path to your Node.js backend folder
+    ports:
+      - "6000:8000"  # Exposes port 5000 for Express backend
+    environment:
+      - MONGO_URI=mongodb+srv://atirspam5601:5aRLqSzXnXi4J0HY@aircluster.ufwrf.mongodb.net/?retryWrites=true&w=majority&appName=aircluster  # MongoDB Atlas connection string
+    depends_on:
+      - frontend
+    networks:
+      - mern
+
+networks:
+  mern:
+    driver: bridge

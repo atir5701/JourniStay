@@ -12,7 +12,6 @@ const BookingWidget = () => {
   
   const handleBooking = async (e) => {
     e.preventDefault()
-    nam
     const data = {
       checkIn,checkOut,name,email,place:id
     }
